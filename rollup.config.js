@@ -32,9 +32,6 @@ import compiler from '@ampproject/rollup-plugin-closure-compiler';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
-// Polyfills for the UMD
-const polyfills = fs.readFileSync('./scripts/polyfills.js', 'utf8');
-
 export default [
   {
     input: 'index.js',
@@ -53,7 +50,6 @@ export default [
         language_out: 'ECMASCRIPT3',
         compilation_level: 'ADVANCED',
         warning_level: 'VERBOSE',
-        outputWrapper: polyfills + '%output%',
         externs: ['externs/wavefile.js','externs/amd.js',]
       }),
       compiler({
